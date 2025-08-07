@@ -100,7 +100,7 @@ npm run dist
 ### 项目结构
 
 ```
-hosts-manage/
+hosts-manager/
 ├── electron/          # Electron 主进程和预加载脚本
 │   ├── main.ts       # 主进程入口
 │   └── preload.ts    # 预加载脚本
