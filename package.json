@@ -1,0 +1,65 @@
+{
+  "name": "hosts-manager",
+  "version": "1.0.0",
+  "description": "A hosts file manager built with Electron and Vue3",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "preinstall": "node scripts/check-node-version.js",
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "electron": "wait-on tcp:5173 && electron .",
+    "electron-dev": "concurrently \"npm run dev\" \"npm run electron\"",
+    "electron-pack": "npm run build && electron-builder",
+    "dist": "npm run build && electron-builder --publish=never",
+    "check-version": "node scripts/check-node-version.js"
+  },
+  "keywords": [
+    "electron",
+    "vue3",
+    "hosts",
+    "manager"
+  ],
+  "author": "Chenzhao",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.0",
+    "concurrently": "^9.0.0",
+    "electron": "^35.0.0",
+    "electron-builder": "^25.0.0",
+    "typescript": "^5.8.2",
+    "vite": "^6.0.0",
+    "vite-plugin-electron": "^0.15.5",
+    "vite-plugin-electron-renderer": "^0.14.5",
+    "vue-tsc": "^3.0.0",
+    "wait-on": "^8.0.0"
+  },
+  "dependencies": {
+    "@vueuse/core": "~13.6.0",
+    "element-plus": "~2.10.5",
+    "vue": "~3.5.13"
+  },
+  "build": {
+    "appId": "com.hostsmanager.app",
+    "productName": "Hosts Manager",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+} 
